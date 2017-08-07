@@ -1,0 +1,8 @@
+[twitter]
+# There is an annoying problem with a library where if your oauth info
+# is wrong, there is no signal for error, you just get no tweets...
+# so be careful.  Also, do not put quotes around these values.
+  oauth_consumer_key = foo
+  oauth_consumer_secret = bar
+  oauth_token = baz
+  oauth_token_secret = qux
