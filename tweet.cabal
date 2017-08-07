@@ -18,7 +18,7 @@ executable tweet
   hs-source-dirs:      src
   main-is:             Main.hs
   other-modules:       Twitter, Stats, Tweet, Command, Types, Rate, TopList, Emoji, EmojiData
-  default-extensions: TypeApplications LambdaCase OverloadedStrings
+  default-extensions:  TypeApplications LambdaCase OverloadedStrings
   default-language:    Haskell2010
   build-depends:
       base >= 4.7 && < 5

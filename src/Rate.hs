@@ -14,7 +14,7 @@ newRate = Rate 0 [] [] 0
 
 moreHits :: Integer -> Rate -> Rate
 moreHits hits (Rate _ s m 0) = Rate hits s m 1
-moreHits hits (Rate ls s m secs) = 
+moreHits hits (Rate ls s m secs) =
   let news = ls : take 58 s
       newm = if secs `mod` 60 == 0
         then ls + sum s : take 58 m
@@ -39,4 +39,4 @@ smhHits (Rate latsec secs mins secCount) =
 
     minavg = (toRational $ latsec + sum secs) * minfrac
     houravg = (minavg + toRational (sum mins)) * hourfrac
-  in (latsec, round minavg, round houravg) 
+  in (latsec, round minavg, round houravg)

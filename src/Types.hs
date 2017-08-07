@@ -46,7 +46,7 @@ data TweetInfo = TweetInfo {
 }
 
 newtype Emoji = Emoji {
-  unEmoji :: T.Text 
+  unEmoji :: T.Text
 } deriving (Eq, Ord, Show)
 
 newtype Domain = Domain {
@@ -73,7 +73,7 @@ data Stats = Stats {
 
 data EmojiData a = EmojiData {
   edName :: a,
-  edCodePoints :: a 
+  edCodePoints :: a
 --   edHasTwitter :: Bool -- I don't think there is a need for this.
 } deriving (Show, Data, Functor)
 

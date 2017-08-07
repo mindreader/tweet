@@ -37,7 +37,7 @@ getInfo ed (TweetInfo txt hts urls meds) =
 
   where
     hasUrl = length urls > 0
-    hasPhotoUrl = length meds > 0 
+    hasPhotoUrl = length meds > 0
     hashTags = HashTag . hashTagText <$> hts
     doms = concatMap urlsToDomains urls
     emos = scrapeEmojies txt ed

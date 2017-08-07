@@ -40,8 +40,6 @@ twitterParser = section "twitter" $ do
     <*> fieldOf "oauth_consumer_secret" string
     <*> fieldOf "oauth_token" string
     <*> fieldOf "oauth_token_secret" string
-  
-
 
 main :: IO ()
 main = do
@@ -53,8 +51,8 @@ main = do
 
   caps <- getNumCapabilities
 
-  (tweetQueue, resultQueue) <- (,) <$> newTBQueueIO 1000 <*> newTBQueueIO (caps * 1000) 
-  commandChan <- newBroadcastTChanIO 
+  (tweetQueue, resultQueue) <- (,) <$> newTBQueueIO 1000 <*> newTBQueueIO (caps * 1000)
+  commandChan <- newBroadcastTChanIO
 
   workers <- forM [1..caps] $ \_ -> do
     comchan <- atomically (dupTChan commandChan)

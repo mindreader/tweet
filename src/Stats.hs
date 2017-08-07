@@ -46,7 +46,7 @@ statsProc comchan resq = do
       Tick -> loop (tick stats)
       Res st -> loop (updateStats stats st)
       Com Die -> return ()
-      Com (Report mvar) -> do 
+      Com (Report mvar) -> do
         putMVar mvar stats
         loop stats
 

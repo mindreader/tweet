@@ -19,7 +19,7 @@ reportLoop :: TChan Command -> IO ()
 reportLoop comchan = forever $ do
   getReport comchan >>= putStrLn . renderReport Short
   threadDelay 5000000
- 
+
 
 -- For debugging.
 commandControl :: TChan Command -> IO ()
@@ -31,7 +31,7 @@ commandControl chan = do
       "state" -> getReport chan >>= putStrLn . show >> loop
       "report" -> getReport chan >>= putStrLn . renderReport Long >> loop
       c -> putStrLn ("unrecognized command: " ++ show c) >> loop
- 
+
 
 getReport :: TChan Command -> IO Stats
 getReport chan = do
@@ -43,8 +43,8 @@ data ReportLength = Long | Short
 
 renderReport :: ReportLength -> Stats -> String
 renderReport rl s = case rl of
-  Long -> 
-    "Total Tweets: " <> show (totalTweets s) <> "\n" <> 
+  Long ->
+    "Total Tweets: " <> show (totalTweets s) <> "\n" <>
     "Average Tweets per second:" <> show tps <> " minute:" <> show tpm  <> " hour:" <> show tph <> "\n" <>
     "Top 5 emojis: " <> (T.unpack $ T.intercalate ", " topemos) <> "\n" <>
     "Percent of tweets with emojis: " <> emoPerc <> "\n" <>
@@ -72,5 +72,5 @@ renderReport rl s = case rl of
     topdomains = s & topDomains & TL.top 5 & map (unDomain . fst)
 
     emoPerc = printf "%.2f%%" $ perc emojiTweets
-    urlPerc = printf "%.2f%%" $ perc urlTweets 
+    urlPerc = printf "%.2f%%" $ perc urlTweets
     photoPerc = printf "%.2f%%" $ perc photoUrlTweets
