@@ -17,7 +17,7 @@ data Res = Tweet TweetInfo | Com Command
 
 tweetInfo :: TChan Command -> TBQueue TweetInfo -> TBQueue StatResult -> IO ()
 tweetInfo com twq resq = do
-  let em = emojiData -- TODO What do to ensure this is shared?
+  let em = emojiData -- to ensure sharing.
   let getRes = Tweet <$> readTBQueue twq <|> Com <$> readTChan com
       loop = do
         atomically getRes >>= \case
